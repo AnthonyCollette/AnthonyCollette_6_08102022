@@ -1,0 +1,45 @@
+.filter {
+    &__title {
+        @include rem(18);
+        font-weight: 700;
+    }
+    &__select-wrapper {
+        display: inline-block;
+        position: relative;
+        margin-left: 25px;
+        &::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-right: 3px solid $white;
+            border-bottom: 3px solid $white;
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-70%) rotate(45deg);
+            transition: all .4s ease-in-out;
+        }
+        &.open {
+            &::after {
+                transform: translateY(-30%) rotate(225deg);
+            }
+        }
+    }
+    select {
+        cursor: pointer;
+        background-color: $color-002;
+        color: $white;
+        font-family: $font-001;
+        @include rem(18);
+        padding: 14px 60px 14px 20px;
+        border-radius: 5px;
+        appearance: none;
+    
+        
+        option {
+            padding: 14px 20px;
+            margin-bottom: 50px;
+        }
+
+    }
+}

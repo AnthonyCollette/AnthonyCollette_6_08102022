@@ -1,0 +1,51 @@
+.portfolio {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 60px;
+
+    &__article {
+        width: 33%;
+        max-width: 350px;
+        margin-bottom: 30px;
+
+        &--img-wrapper {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 5px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                cursor: pointer;
+                transition: all .4s ease-in-out;
+                &:hover {
+                    transform: scale(1.2);
+                    filter: grayscale(1);
+                }
+            }
+        }
+
+        &--text {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            h5 {
+                color: $color-002;
+                @include rem(24);
+                margin: 0;
+            }
+            .likes {
+                color: $color-002;
+                @include rem(24);
+                font-weight: 400;
+                i {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

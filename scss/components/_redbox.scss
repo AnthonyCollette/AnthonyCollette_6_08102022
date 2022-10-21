@@ -1,0 +1,14 @@
+.redbox {
+    background-color: $color-001;
+    width: 306px;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 0;
+    right: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 35px;
+    @include rem(24);
+    font-weight: 500;
+}

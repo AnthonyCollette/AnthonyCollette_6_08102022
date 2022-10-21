@@ -1,0 +1,22 @@
+{
+  "name": "anthonycollette_6_08102022",
+  "version": "1.0.0",
+  "description": "Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o css/ --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnthonyCollette/AnthonyCollette_6_08102022.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnthonyCollette/AnthonyCollette_6_08102022/issues"
+  },
+  "homepage": "https://github.com/AnthonyCollette/AnthonyCollette_6_08102022#readme",
+  "devDependencies": {
+    "node-sass": "^7.0.3"
+  }
+}

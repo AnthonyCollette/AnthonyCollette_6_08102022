@@ -1,0 +1,162 @@
+.photograph-header h1 {
+  color: #D3573C;
+  font-size: 4rem; }
+
+.container {
+  max-width: 90%;
+  width: 1240px;
+  margin: 0 auto; }
+
+.filter__title {
+  font-size: 1.125rem;
+  font-weight: 700; }
+
+.filter__select-wrapper {
+  display: inline-block;
+  position: relative;
+  margin-left: 25px; }
+  .filter__select-wrapper::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-right: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-70%) rotate(45deg);
+    transition: all .4s ease-in-out; }
+  .filter__select-wrapper.open::after {
+    transform: translateY(-30%) rotate(225deg); }
+
+.filter select {
+  cursor: pointer;
+  background-color: #901C1C;
+  color: #fff;
+  font-family: "DM Sans", "sans-serif";
+  font-size: 1.125rem;
+  padding: 14px 60px 14px 20px;
+  border-radius: 5px;
+  appearance: none; }
+  .filter select option {
+    padding: 14px 20px;
+    margin-bottom: 50px; }
+
+.portfolio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 60px; }
+  .portfolio__article {
+    width: 33%;
+    max-width: 350px;
+    margin-bottom: 30px; }
+    .portfolio__article--img-wrapper {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 5px; }
+      .portfolio__article--img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        cursor: pointer;
+        transition: all .4s ease-in-out; }
+        .portfolio__article--img-wrapper img:hover {
+          transform: scale(1.2);
+          filter: grayscale(1); }
+    .portfolio__article--text {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+      .portfolio__article--text h5 {
+        color: #901C1C;
+        font-size: 1.5rem;
+        margin: 0; }
+      .portfolio__article--text .likes {
+        color: #901C1C;
+        font-size: 1.5rem;
+        font-weight: 400; }
+        .portfolio__article--text .likes i {
+          cursor: pointer; }
+
+.redbox {
+  background-color: #D3573C;
+  width: 306px;
+  border-radius: 5px;
+  position: fixed;
+  bottom: 0;
+  right: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 35px;
+  font-size: 1.5rem;
+  font-weight: 500; }
+
+.homepage-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .homepage-container h1 {
+    margin-right: 0; }
+
+.photograph-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  .photograph-header__img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden; }
+    .photograph-header__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+
+#img-fullpage {
+  position: fixed;
+  inset: 0 0 0 0;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: none; }
+  #img-fullpage .img-wrapper {
+    position: relative;
+    width: 1050px;
+    height: 900px;
+    max-height: 80%;
+    max-width: 80%; }
+    #img-fullpage .img-wrapper .chevron-left,
+    #img-fullpage .img-wrapper .chevron-right {
+      position: absolute;
+      top: 50%;
+      cursor: pointer;
+      color: #901C1C;
+      font-size: 2.5rem; }
+    #img-fullpage .img-wrapper .chevron-left {
+      left: -50px;
+      transform: translateY(-50%) rotate(-90deg); }
+    #img-fullpage .img-wrapper .chevron-right {
+      right: -50px;
+      transform: translateY(-50%) rotate(90deg); }
+    #img-fullpage .img-wrapper h2 {
+      color: #901C1C;
+      font-size: 1.5rem; }
+    #img-fullpage .img-wrapper .close-btn {
+      position: absolute;
+      top: 10px;
+      right: -70px; }
+  #img-fullpage .img-border {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden; }
+    #img-fullpage .img-border img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
