@@ -74,4 +74,10 @@ async function init() {
 	displayData(photographers)
 }
 
+// const select = document.getElementById('filter-select');
+
+// select.addEventListener('click', () => {
+// 	selectWrapper.classList.contains('open') ? selectWrapper.classList.remove('open') : selectWrapper.classList.add('open');
+// })
+
 init()

@@ -95,6 +95,57 @@
   font-size: 1.5rem;
   font-weight: 500; }
 
+.carousel {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  inset: 0 0 0 0;
+  display: none;
+  justify-content: center;
+  align-items: center; }
+  .carousel h2 {
+    color: #901C1C; }
+  .carousel i {
+    color: #901C1C;
+    font-size: 3.75rem;
+    cursor: pointer; }
+  .carousel .fa-xmark {
+    position: absolute;
+    top: 20px;
+    right: 0px; }
+  .carousel .fa-chevron-left {
+    padding-right: 35px; }
+  .carousel .fa-chevron-right {
+    padding-left: 35px; }
+  .carousel__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    position: relative; }
+  .carousel__show {
+    width: 1050px;
+    height: 900px;
+    overflow: hidden; }
+  .carousel__slider {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: all .4s ease-in-out; }
+    .carousel__slider--image {
+      width: 1050px;
+      height: 900px; }
+      .carousel__slider--image-wrapper {
+        width: 100%;
+        height: 90%; }
+        .carousel__slider--image-wrapper img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; }
+
 .homepage-container {
   display: flex;
   justify-content: space-between;
