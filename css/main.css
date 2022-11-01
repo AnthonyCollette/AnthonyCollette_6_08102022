@@ -7,6 +7,11 @@
   width: 1240px;
   margin: 0 auto; }
 
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; }
+
 .filter__title {
   font-size: 1.125rem;
   font-weight: 700; }
@@ -73,7 +78,11 @@
       .portfolio__article--text h5 {
         color: #901C1C;
         font-size: 1.5rem;
-        margin: 0; }
+        margin: 0;
+        max-width: 70%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; }
       .portfolio__article--text .likes {
         color: #901C1C;
         font-size: 1.5rem;

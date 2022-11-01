@@ -1,4 +1,3 @@
-import { select } from "./sortPortfolio.js";
 const carouselDiv = document.getElementById('carousel');
 
 export const carousel = (firstName, images) => {
@@ -7,6 +6,15 @@ export const carousel = (firstName, images) => {
 
         articles[i].addEventListener('click', () => {
             carouselDiv.style.display = 'flex';
+
+            const arrayRotate = (arr, count) => {
+                count -= arr.length * Math.floor(count / arr.length);
+                arr.push.apply(arr, arr.splice(0, count));
+                return arr;
+            }
+
+            
+
             carouselDiv.innerHTML = `
                 <div class="carousel__wrapper">
                     <i class="fa-solid fa-chevron-left" id="prev"></i>
@@ -18,10 +26,19 @@ export const carousel = (firstName, images) => {
                     <i class="fa-solid fa-xmark" id="close-carousel-btn"></i>
                 </div>
             `
-            const slider = document.getElementById('carousel__slider');
-            for (let v = 0; v < images.length; v++) {
-   
-                images[v].image ? 
+            const slider = document.getElementById('carousel__slider')
+            const selectedImage = images[i + 1]
+            console.log(selectedImage)
+            selectedImage.images ? slider.innerHTML += `
+            <div class="carousel__slider--image">
+            <div class="carousel__slider--image-wrapper">
+                <img src="assets/images/${firstName}/${selectedImage.image}" alt"" />
+            </div>
+            <h2>${selectedImage.title}</h2>
+        </div>
+            ` : '';
+            for (let v = 0; v < images.length; v++)
+            images[v].image ? 
                 slider.innerHTML += `
                 <div class="carousel__slider--image">
                     <div class="carousel__slider--image-wrapper">
@@ -30,7 +47,7 @@ export const carousel = (firstName, images) => {
                     <h2>${images[v].title}</h2>
                 </div>
                 ` : ''
-            }
+            
             const nextBtn = document.getElementById('next')
             const prevBtn = document.getElementById('prev')
             let translateX = 0

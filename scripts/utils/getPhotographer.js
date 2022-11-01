@@ -59,6 +59,23 @@ export const getPhotographer = async (id) => {
 					</div>`;
 					totalOfLikes += picture.likes;
 				}
+				if (picture.video) {
+					portfolio.innerHTML += `
+					<div class="portfolio__article">
+					<div class="portfolio__article--img-wrapper">
+							<video controls>
+								<source src="assets/images/${firstName}/${picture.video}" alt="${picture.title}" class="img-portfolio"/>
+							</video>
+					</div>
+					<div class="portfolio__article--text">
+						<h5>${picture.title}</h5>
+						<div class="likes">
+							<p>${picture.likes} <i class="fa-solid fa-heart"></i></p> 
+						</div>
+					</div>
+				</div>
+				`
+				}
 			})
 			
 			redBox.innerHTML += `

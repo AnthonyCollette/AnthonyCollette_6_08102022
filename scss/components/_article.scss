@@ -37,6 +37,10 @@
                 color: $color-002;
                 @include rem(24);
                 margin: 0;
+                max-width: 70%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             .likes {
                 color: $color-002;
