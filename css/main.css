@@ -15,6 +15,19 @@ video {
 .display-flex {
   display: flex; }
 
+button {
+  background-color: #901C1C;
+  color: #fff;
+  transition: all .4s ease-in-out; }
+  button:hover {
+    background-color: #D3573C;
+    color: #000; }
+
+.close-modal-btn {
+  order: 1;
+  background-color: transparent;
+  border: none; }
+
 .filter__title {
   font-size: 1.125rem;
   font-weight: 700; }
@@ -181,8 +194,6 @@ video {
       text-align: left;
       margin: 0;
       max-width: 80%; }
-    #contact_modal #modal-header .img-wrapper {
-      order: 1; }
   #contact_modal textarea {
     height: 170px;
     border-radius: 5px;
@@ -190,7 +201,7 @@ video {
   #contact_modal .contact_button {
     margin-top: 20px; }
   #contact_modal input, #contact_modal textarea {
-    font-size: 1.3125rem;
+    font-size: 2.25rem;
     padding: 0 20px;
     width: calc(100% - 40px); }
 
