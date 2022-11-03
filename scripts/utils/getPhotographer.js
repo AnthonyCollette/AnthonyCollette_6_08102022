@@ -6,6 +6,7 @@ const redBox = document.getElementById('redbox');
 const imgLink = document.getElementsByClassName('img-portfolio');
 const divFullImg = document.getElementById('img-fullpage');
 let photographer = '';
+const header = document.getElementById('modal-header')
 
 export let firstName = '';
 export const images = []
@@ -82,6 +83,8 @@ export const getPhotographer = async (id) => {
 				<p>${totalOfLikes} <i class="fa-solid fa-heart"></i></p>
 				<p>${photographer.price}€ / jour</p>
 			`
+			// Affichage du nom du photographe dans le titre
+			header.innerHTML += `<h2>Contactez-moi ${photographer.name}</h2>`
 
 			// for (let i = 0; i < imgLink.length; i++) {
 			// 	imgLink[i].addEventListener('click', (e) => {

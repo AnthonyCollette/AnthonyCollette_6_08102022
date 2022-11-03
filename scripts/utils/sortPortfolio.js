@@ -87,6 +87,7 @@ export const sortPortfolio = (images, firstName) => {
                     `
 					}
 				})
+				articles = document.getElementsByClassName('portfolio__article');
 				break
 			// Tri par date
 			case 'date':
@@ -181,6 +182,7 @@ export const sortPortfolio = (images, firstName) => {
                         `
 					}
 				})
+	
 				break
 			default:
 				images.sort((a, b) => {
@@ -210,7 +212,9 @@ export const sortPortfolio = (images, firstName) => {
 				`)
 						: ''
 				})
+
 				break
 		}
+
 	})
 }

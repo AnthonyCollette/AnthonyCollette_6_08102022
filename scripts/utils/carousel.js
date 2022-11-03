@@ -1,21 +1,26 @@
-const carouselDiv = document.getElementById('carousel');
+const carouselDiv = document.getElementById('carousel')
+const select = document.getElementById('filter-select')
 
 export const carousel = (firstName, images) => {
-    const articles = document.getElementsByClassName('portfolio__article') 
+    let articles = document.getElementsByClassName('portfolio__article');
     for (let i = 0; i < articles.length; i++) {
+            articles[i].addEventListener('click', () => {
+                const backUpImages = [];
+                for (let image of images) {
+                    backUpImages.push(image)
+                }
+                // Tri des images
+                const sortArray = (array, index) => {
+                    for (let v = 0; v < index; v++) {
+                        let firstImage = array.shift()
+                        array.push(firstImage)
+                    }
+                    return array
+                }
+                sortArray(images, i)
 
-        articles[i].addEventListener('click', () => {
-            carouselDiv.style.display = 'flex';
-
-            const arrayRotate = (arr, count) => {
-                count -= arr.length * Math.floor(count / arr.length);
-                arr.push.apply(arr, arr.splice(0, count));
-                return arr;
-            }
-
-            
-
-            carouselDiv.innerHTML = `
+                carouselDiv.style.display = 'flex'
+                carouselDiv.innerHTML = `
                 <div class="carousel__wrapper">
                     <i class="fa-solid fa-chevron-left" id="prev"></i>
                     <div class="carousel__show">
@@ -26,60 +31,64 @@ export const carousel = (firstName, images) => {
                     <i class="fa-solid fa-xmark" id="close-carousel-btn"></i>
                 </div>
             `
-            const slider = document.getElementById('carousel__slider')
-            const selectedImage = images[i + 1]
-            console.log(selectedImage)
-            selectedImage.images ? slider.innerHTML += `
-            <div class="carousel__slider--image">
-            <div class="carousel__slider--image-wrapper">
-                <img src="assets/images/${firstName}/${selectedImage.image}" alt"" />
-            </div>
-            <h2>${selectedImage.title}</h2>
-        </div>
-            ` : '';
-            for (let v = 0; v < images.length; v++)
-            images[v].image ? 
-                slider.innerHTML += `
+                const slider = document.getElementById('carousel__slider')
+
+                // Affichage des images
+                for (const image of images) {
+                    if (image.image) {
+                        slider.innerHTML += `
                 <div class="carousel__slider--image">
                     <div class="carousel__slider--image-wrapper">
-                        <img src="assets/images/${firstName}/${images[v].image}" alt"" />
+                        <img src="assets/images/${firstName}/${image.image}" alt"" />
                     </div>
-                    <h2>${images[v].title}</h2>
+                    <h2>${image.title}</h2>
                 </div>
-                ` : ''
-            
-            const nextBtn = document.getElementById('next')
-            const prevBtn = document.getElementById('prev')
-            let translateX = 0
-            let sliderWidth = -((articles.length - 1) * 1050)
-            
-                        prevBtn.addEventListener('click', () => {
-                if (translateX === 0) {
-                    translateX = sliderWidth
-                    slider.style.transform = "translateX("+translateX+"px)";
-                } else {
-                    translateX += 1050
-                    slider.style.transform = "translateX("+translateX+"px)";
-                } 
-          
-            })
+                `}
+                    if (image.video) {
+                        slider.innerHTML += `
+                    <div class="carousel__slider--video">
+                    <div class="carousel__slider--video-wrapper">
+                    <video controls>
+                      <source src="assets/images/${firstName}/${image.video}" alt="${image.title}" class="img-portfolio"/>
+                    </video>
+                    </div>
+                    <h2>${image.title}</h2>
+                </div>
+                `
+                    }
+                }
 
-            nextBtn.addEventListener('click', () => {
-                if (translateX === sliderWidth) {
-                    translateX = 0
-                    slider.style.transform = "translateX(0px)";
-                } else {
-                    translateX -= 1050
-                    slider.style.transform = "translateX("+translateX+"px)";
-                } 
-          
-            })
+                const nextBtn = document.getElementById('next')
+                const prevBtn = document.getElementById('prev')
+                let translateX = 0
+                let sliderWidth = -((articles.length - 1) * 1050)
 
-            const closeBtn = document.getElementById('close-carousel-btn')
+                prevBtn.addEventListener('click', () => {
+                    if (translateX === 0) {
+                        translateX = sliderWidth
+                        slider.style.transform = 'translateX(' + translateX + 'px)'
+                    } else {
+                        translateX += 1050
+                        slider.style.transform = 'translateX(' + translateX + 'px)'
+                    }
+                })
 
-            closeBtn.addEventListener('click', () => {
-                carouselDiv.style.display = 'none'
+                nextBtn.addEventListener('click', () => {
+                    if (translateX === sliderWidth) {
+                        translateX = 0
+                        slider.style.transform = 'translateX(0px)'
+                    } else {
+                        translateX -= 1050
+                        slider.style.transform = 'translateX(' + translateX + 'px)'
+                    }
+                })
+
+                const closeBtn = document.getElementById('close-carousel-btn')
+
+                closeBtn.addEventListener('click', () => {
+                    carouselDiv.style.display = 'none'
+                    images = backUpImages
+                })
             })
-        })
-    }
+        }
 }
