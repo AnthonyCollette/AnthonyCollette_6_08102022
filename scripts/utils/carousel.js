@@ -47,13 +47,13 @@ export const carousel = (firstName, images) => {
                     if (image.video) {
                         slider.innerHTML += `
                     <div class="carousel__slider--video">
-                    <div class="carousel__slider--video-wrapper">
-                    <video controls>
-                      <source src="assets/images/${firstName}/${image.video}" alt="${image.title}" class="img-portfolio"/>
-                    </video>
+                        <div class="carousel__slider--video-wrapper">
+                            <video controls>
+                            <source src="assets/images/${firstName}/${image.video}" alt="${image.title}" class="img-portfolio"/>
+                            </video>
+                        </div>
+                        <h2>${image.title}</h2>
                     </div>
-                    <h2>${image.title}</h2>
-                </div>
                 `
                     }
                 }

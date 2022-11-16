@@ -13,4 +13,3 @@ getPhotographer(id).then(() => {
 select.addEventListener('change', () => {
     carousel(firstName, images)
 })
-
