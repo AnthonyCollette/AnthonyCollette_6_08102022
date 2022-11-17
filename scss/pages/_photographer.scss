@@ -15,6 +15,10 @@
             object-fit: cover;
         }
     }
+    
+    &__desc {
+        order: -1;
+    }
 }
 
 #img-fullpage {

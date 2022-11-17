@@ -8,8 +8,6 @@ btn.addEventListener('click', () => {
 });
 
 // Fermeture du modal
-console.log(closeModalBtn);
 closeModalBtn.addEventListener('click', () => {
-  console.log('Cliqué !');
   modal.classList.remove('display-flex');
 });

@@ -2,7 +2,7 @@ export function photographerFactory(data) {
   const { id, portrait, city, country, tagline, price } = data;
 
   const picture = `assets/photographers/${portrait}`;
-  const url = `photographers.html?id=${id}`;
+  const url = `photographer.html?id=${id}`;
   function name() {
     return data.name;
   }
@@ -18,14 +18,32 @@ export function photographerFactory(data) {
     h2.textContent = name();
     taglinePar.textContent = tagline;
     taglinePar.classList.add('tagline');
-    link.setAttribute('src', url);
+    link.setAttribute('href', url);
 
-    article.appendChild(img);
-    article.appendChild(h2);
-    article.appendChild(taglinePar);
     article.appendChild(link);
+
+    link.appendChild(img);
+    link.appendChild(h2);
+    link.appendChild(taglinePar);
 
     return article;
   }
-  return { name, getUserCardDOM };
+  function getInfosPhotographer() {
+    const h1 = document.createElement('h1');
+    const img = document.createElement('img');
+    
+    h1.textContent = name();
+    img.setAttribute('src', picture);
+
+
+    const descDiv = document.getElementById('photographer-desc')
+    descDiv.appendChild(h1);
+
+    const imgDiv = document.getElementById('photographer-img')
+    imgDiv.appendChild(img);
+
+    return descDiv, imgDiv;
+  }
+
+  return { name, getUserCardDOM, getInfosPhotographer };
 }
