@@ -28,19 +28,33 @@ export function photographerFactory(data) {
 
     return article;
   }
+
   function getInfosPhotographer() {
     const h1 = document.createElement('h1');
     const img = document.createElement('img');
-    
+    const h2 = document.createElement('h2');
+    const paragraphDesc = document.createElement('p');
+    const likesRedBox = document.createElement('p');
+    const tarifsRedBox = document.createElement('p');
+
     h1.textContent = name();
     img.setAttribute('src', picture);
+    h2.textContent = city + ', ' + country;
+    paragraphDesc.textContent = tagline;
+    likesRedBox.textContent = '80';
+    tarifsRedBox.textContent = `${price}€/jour`;
 
-
-    const descDiv = document.getElementById('photographer-desc')
+    const descDiv = document.getElementById('photographer-desc');
     descDiv.appendChild(h1);
+    descDiv.appendChild(h2);
+    descDiv.appendChild(paragraphDesc);
 
-    const imgDiv = document.getElementById('photographer-img')
+    const imgDiv = document.getElementById('photographer-img');
     imgDiv.appendChild(img);
+
+    const redBox = document.getElementById('redbox');
+    redBox.appendChild(likesRedBox);
+    redBox.appendChild(tarifsRedBox);
 
     return descDiv, imgDiv;
   }
