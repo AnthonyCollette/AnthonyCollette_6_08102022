@@ -1,5 +1,5 @@
 export function mediaFactory(data, name) {
-  const { image, video, likes, price, title } = data;
+  const { image, video, likes, title } = data;
   let firstName = name ? name.substring(0, name.indexOf(' ')) : '';
   firstName.includes('-') ? (firstName = firstName.replace('-', ' ')) : '';
   const imageSrc = `assets/images/${firstName}/${image}`;
@@ -95,13 +95,69 @@ export function mediaFactory(data, name) {
     return data;
   }
 
-  function openCarousel(mediasData, selectedMedia) {
+  function openCarousel(index) {
     const carousel = document.getElementById('carousel');
-    const slider = document.getElementById('carousel-slider');
+    const newMediasArray = data;
+
+    // Tri des médias
+    const sortArray = (array, index) => {
+      for (let v = 0; v < index; v++) {
+        let firstImage = array.shift();
+        array.push(firstImage);
+      }
+      return array;
+    };
+    sortArray(newMediasArray, index);
 
     // Apparition du carousel
     carousel.style.display = 'flex';
+    for (const media of newMediasArray) {
+      const imageCarouselSrc = `assets/images/${firstName}/${media.image}`;
+      const videoCarouselSrc = `assets/images/${firstName}/${media.video}`;
+      const carouselSlider = document.getElementById('carousel__slider');
+
+      // Création des éléments
+      const sliderImage = document.createElement('div');
+      const sliderImageWrapper = document.createElement('div');
+      const video = document.createElement('video');
+      const videoFile = document.createElement('source');
+      const img = document.createElement('img');
+      const h2 = document.createElement('h2');
+
+      // Attribution des classes
+      sliderImage.classList.add('carousel__slider--image');
+      sliderImageWrapper.classList.add('carousel__slider--image-wrapper');
+
+      carouselSlider.appendChild(sliderImage);
+      sliderImage.appendChild(sliderImageWrapper);
+
+      h2.textContent = media.title;
+      sliderImage.appendChild(h2);
+
+      if (media.image) {
+        img.setAttribute('src', imageCarouselSrc);
+        img.setAttribute('alt', media.title);
+
+        sliderImageWrapper.appendChild(img);
+      }
+
+      if (media.video) {
+        videoFile.setAttribute('src', videoCarouselSrc);
+        video.setAttribute('controls', true);
+        video.appendChild(videoFile);
+
+        sliderImageWrapper.appendChild(video);
+      }
+    }
   }
 
-  return { getPortfolio, sortMedias, openCarousel };
+  function closeCarousel() {
+    const carouselClostBtn = document.getElementById('close-carousel-btn');
+    const carousel = document.getElementById('carousel');
+    carouselClostBtn.addEventListener('click', () => {
+      carousel.style.display = 'none';
+    });
+  }
+
+  return { getPortfolio, sortMedias, openCarousel, closeCarousel };
 }

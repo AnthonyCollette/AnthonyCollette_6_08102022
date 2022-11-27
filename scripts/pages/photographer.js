@@ -1,5 +1,3 @@
-import { select } from '/scripts/utils/sortPortfolio.js';
-import { carousel } from '../utils/carousel.js';
 import { photographerFactory } from '../factories/photographer.js';
 import { mediaFactory } from '../factories/medias.js';
 
@@ -17,9 +15,11 @@ const data = await fetch('../../data/photographers.json')
   );
 
 // Récupération des médias du photographe
-const mediasData = await fetch('../../data/photographers.json')
+let mediasData = await fetch('../../data/photographers.json')
   .then((res) => res.json())
   .then((arrays) => arrays.media.filter((media) => media.photographerId == id));
+
+const media = mediaFactory(mediasData);
 
 // Affichage du header
 const photographer = photographerFactory(data, mediasData);
@@ -36,19 +36,34 @@ mediasData.forEach((media) => {
   portfolioDiv.appendChild(displayMedias);
 });
 
+// Modification du tri des médias
+const select = document.getElementById('filter-select');
 select.addEventListener('change', () => {
   const mediasArray = mediaFactory(mediasData);
 
   // Tri des médias
-  const sortPortfolio = mediasArray.sortMedias(select.value);
+  mediasData = mediasArray.sortMedias(select.value);
 
   // Remise à zero du portfolio
   portfolioDiv.textContent = '';
 
   // Affichage des médias
-  sortPortfolio.forEach((media) => {
+  mediasData.forEach((media) => {
     const medias = mediaFactory(media, data.name);
     const displayMedias = medias.getPortfolio();
     portfolioDiv.appendChild(displayMedias);
   });
 });
+
+// Affichage du carousel
+const mediasDisplayed = document.getElementsByClassName('portfolio__article');
+
+for (let i = 0; i < mediasDisplayed.length; i++) {
+  const media = mediaFactory(mediasData, data.name);
+  mediasDisplayed[i].addEventListener('click', () => {
+    media.openCarousel(i);
+  });
+}
+
+// Fermeture du carousel
+media.closeCarousel();
