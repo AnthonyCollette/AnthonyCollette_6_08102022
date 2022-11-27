@@ -1,84 +1,90 @@
 .photograph-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    &__img {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        overflow: hidden;
+  &__img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    
-    &__desc {
-        order: -1;
+  }
+
+  &__desc {
+    order: -1;
+    h2 {
+      @include rem(24);
+      color: $color-002;
     }
+    p {
+      @include rem(18);
+      color: $color-003;
+    }
+  }
 }
 
 #img-fullpage {
-    position: fixed;
-    inset: 0 0 0 0;
-    background-color: $white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    display: none;
+  position: fixed;
+  inset: 0 0 0 0;
+  background-color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: none;
 
-    .img-wrapper {
-        position: relative;
-        width: 1050px;
-        height: 900px;
-        max-height: 80%;
-        max-width: 80%;
+  .img-wrapper {
+    position: relative;
+    width: 1050px;
+    height: 900px;
+    max-height: 80%;
+    max-width: 80%;
 
-        .chevron-left,
-        .chevron-right {
-            position: absolute;
-            top: 50%;
-            cursor: pointer;
-            color: $color-002;
-            @include rem(40);
-        }
-
-        .chevron-left {
-            left: -50px;
-            transform: translateY(-50%) rotate(-90deg);
-        }
-
-        .chevron-right {
-            right: -50px;
-            transform: translateY(-50%) rotate(90deg);
-        }
-        h2 {
-            color: $color-002;
-            @include rem(24);
-        }
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: -70px;
-        }
+    .chevron-left,
+    .chevron-right {
+      position: absolute;
+      top: 50%;
+      cursor: pointer;
+      color: $color-002;
+      @include rem(40);
     }
 
-    .img-border {
-        height: 100%;
-        width: 100%;
-        border-radius: 5px;
-        overflow: hidden;
-
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .chevron-left {
+      left: -50px;
+      transform: translateY(-50%) rotate(-90deg);
     }
 
+    .chevron-right {
+      right: -50px;
+      transform: translateY(-50%) rotate(90deg);
+    }
+    h2 {
+      color: $color-002;
+      @include rem(24);
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: -70px;
+    }
+  }
+
+  .img-border {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 }

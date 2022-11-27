@@ -1,12 +1,11 @@
 .portfolio {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   margin-top: 60px;
 
   &__article {
-    width: 33%;
+    // width: 90%;
     max-width: 350px;
     margin-bottom: 30px;
 

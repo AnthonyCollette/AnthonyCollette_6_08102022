@@ -1,5 +1,5 @@
-export function photographerFactory(data) {
-  const { id, portrait, city, country, tagline, price } = data;
+export function photographerFactory(data, mediasData) {
+  const { id, portrait, city, country, tagline } = data;
 
   const picture = `assets/photographers/${portrait}`;
   const url = `photographer.html?id=${id}`;
@@ -34,15 +34,11 @@ export function photographerFactory(data) {
     const img = document.createElement('img');
     const h2 = document.createElement('h2');
     const paragraphDesc = document.createElement('p');
-    const likesRedBox = document.createElement('p');
-    const tarifsRedBox = document.createElement('p');
 
     h1.textContent = name();
     img.setAttribute('src', picture);
     h2.textContent = city + ', ' + country;
     paragraphDesc.textContent = tagline;
-    likesRedBox.textContent = '80';
-    tarifsRedBox.textContent = `${price}€/jour`;
 
     const descDiv = document.getElementById('photographer-desc');
     descDiv.appendChild(h1);
@@ -52,12 +48,29 @@ export function photographerFactory(data) {
     const imgDiv = document.getElementById('photographer-img');
     imgDiv.appendChild(img);
 
-    const redBox = document.getElementById('redbox');
-    redBox.appendChild(likesRedBox);
-    redBox.appendChild(tarifsRedBox);
-
     return descDiv, imgDiv;
   }
 
-  return { name, getUserCardDOM, getInfosPhotographer };
+  function createRedBox() {
+    const redBox = document.getElementById('redbox');
+    let totalOfLikes = 0;
+
+    const likesDiv = document.createElement('p');
+    const tarif = document.createElement('p');
+
+    // Addition des likes totaux
+    mediasData.forEach((media) => {
+      totalOfLikes += media.likes;
+    });
+
+    likesDiv.innerHTML = totalOfLikes + ' <i class="fa-solid fa-heart"></i>';
+    tarif.textContent = data.price + ' €/jour';
+
+    redBox.appendChild(likesDiv);
+    redBox.appendChild(tarif);
+
+    return redBox;
+  }
+
+  return { name, getUserCardDOM, getInfosPhotographer, createRedBox };
 }

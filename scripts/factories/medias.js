@@ -1,6 +1,6 @@
 export function mediaFactory(data, name) {
   const { image, video, likes, price, title } = data;
-  const firstName = name.substring(0, name.indexOf(' '));
+  let firstName = name ? name.substring(0, name.indexOf(' ')) : '';
   firstName.includes('-') ? (firstName = firstName.replace('-', ' ')) : '';
   const imageSrc = `assets/images/${firstName}/${image}`;
   const videoSrc = `assets/images/${firstName}/${video}`;
@@ -25,6 +25,7 @@ export function mediaFactory(data, name) {
     imgWrapper.classList.add('portfolio__article--img-wrapper');
     descDiv.classList.add('portfolio__article--text');
     p.classList.add('likes');
+
     // Modification des attributs
     videoPortfolio.setAttribute('controls', true);
 
@@ -50,5 +51,57 @@ export function mediaFactory(data, name) {
     return mediaArticle;
   }
 
-  return { getPortfolio };
+  function sortMedias(sortBy) {
+    switch (sortBy) {
+      // Tri par popularité
+      case 'popularity':
+        data.sort((a, b) => {
+          if (a.likes < b.likes) {
+            return 1;
+          }
+          if (a.likes > b.likes) {
+            return -1;
+          }
+          return 0;
+        });
+        break;
+
+      // Tri par date
+      case 'date':
+        data.sort((a, b) => {
+          if (a.date < b.date) {
+            return -1;
+          }
+          if (a.date > b.date) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+
+      // Tri par ordre alphabétique
+      case 'title':
+        data.sort((a, b) => {
+          if (a.title < b.title) {
+            return -1;
+          }
+          if (a.title > b.title) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+    }
+    return data;
+  }
+
+  function openCarousel(mediasData, selectedMedia) {
+    const carousel = document.getElementById('carousel');
+    const slider = document.getElementById('carousel-slider');
+
+    // Apparition du carousel
+    carousel.style.display = 'flex';
+  }
+
+  return { getPortfolio, sortMedias, openCarousel };
 }
