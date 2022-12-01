@@ -103,4 +103,7 @@ form input {
 .photographer_section article p:last-of-type {
 	font-size: 15px;
 	color: #757575;
+	width: fit-content;
+	width: -moz-fit-content;
+	margin: 5px auto 0;
 }

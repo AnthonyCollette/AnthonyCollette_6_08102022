@@ -8,7 +8,7 @@ export function mediaFactory(data, name) {
 	let translateX = 0
 	let sliderWidth = -((data.length - 1) * 1050)
 
-	function getPortfolio() {
+	function getPortfolio(index) {
 		// Création des éléments
 		const mediaArticle = document.createElement('div')
 		const imgWrapper = document.createElement('div')
@@ -31,6 +31,7 @@ export function mediaFactory(data, name) {
 
 		// Modification des attributs
 		videoPortfolio.setAttribute('controls', true)
+		mediaArticle.setAttribute('tabindex', index)
 
 		// Ajout des éléments
 		mediaArticle.appendChild(imgWrapper)

@@ -33,9 +33,11 @@ const displayRedBox = photographer.createRedBox()
 header.appendChild(infosPhotographer)
 
 // Affichage du portfolio
+let index = 0
 mediasData.forEach((media) => {
+	index += 1
 	const medias = mediaFactory(media, data.name)
-	const displayMedias = medias.getPortfolio()
+	const displayMedias = medias.getPortfolio(index)
 	portfolioDiv.appendChild(displayMedias)
 })
 
@@ -47,13 +49,17 @@ select.addEventListener('change', () => {
 	// Remise à zero du portfolio
 	portfolioDiv.textContent = ''
 
+	index = 0
+
 	// Affichage des médias
 	sortedMedias.forEach((media) => {
+		index += 1
 		const medias = mediaFactory(media, data.name)
-		const displayMedias = medias.getPortfolio()
+		const displayMedias = medias.getPortfolio(index)
 		portfolioDiv.appendChild(displayMedias)
 	})
 
+	// Ouverture du carousel
 	media.openCarousel(mediasDisplayed)
 	// Fermeture du carousel
 	media.closeCarousel(select.value)
