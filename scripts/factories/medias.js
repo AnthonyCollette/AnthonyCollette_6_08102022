@@ -4,6 +4,9 @@ export function mediaFactory(data, name) {
 	firstName.includes('-') ? (firstName = firstName.replace('-', ' ')) : ''
 	const imageSrc = `assets/images/${firstName}/${image}`
 	const videoSrc = `assets/images/${firstName}/${video}`
+	const slider = document.getElementById('carousel__slider')
+	let translateX = 0
+	let sliderWidth = -((data.length - 1) * 1050)
 
 	function getPortfolio() {
 		// Création des éléments
@@ -34,7 +37,6 @@ export function mediaFactory(data, name) {
 		mediaArticle.appendChild(descDiv)
 		descDiv.appendChild(h5)
 		descDiv.appendChild(p)
-
 		videoPortfolio.appendChild(videoFile)
 
 		// Affichage des images
@@ -106,76 +108,113 @@ export function mediaFactory(data, name) {
 		return data
 	}
 
-	function openCarousel(index) {
+	function openCarousel(mediasDisplayed) {
 		const carousel = document.getElementById('carousel')
 		const carouselSlider = document.getElementById('carousel__slider')
 
-		// Tri des médias
-		const sortArray = (array, index) => {
-			for (let i = 0; i < index; i++) {
-				let firstImage = array.shift()
-				array.push(firstImage)
-			}
-			return array
-		}
-		sortArray(data, index)
+		for (let i = 0; i < mediasDisplayed.length; i++) {
+			mediasDisplayed[i].addEventListener('click', (e) => {
+				// Tri des médias
+				const sortArray = (array, index) => {
+					for (let v = 0; v < index; v++) {
+						let firstImage = array.shift()
+						array.push(firstImage)
+					}
+					return array
+				}
+				sortArray(data, i)
 
-		// Apparition du carousel
-		carousel.style.display = 'flex'
+				// Apparition du carousel
+				carousel.style.display = 'flex'
 
-		for (const media of data) {
-			const imageCarouselSrc = `assets/images/${firstName}/${media.image}`
-			const videoCarouselSrc = `assets/images/${firstName}/${media.video}`
+				for (const media of data) {
+					const imageCarouselSrc = `assets/images/${firstName}/${media.image}`
+					const videoCarouselSrc = `assets/images/${firstName}/${media.video}`
 
-			// Création des éléments
-			const sliderImage = document.createElement('div')
-			const sliderImageWrapper = document.createElement('div')
-			const video = document.createElement('video')
-			const videoFile = document.createElement('source')
-			const img = document.createElement('img')
-			const h2 = document.createElement('h2')
+					// Création des éléments
+					const sliderImage = document.createElement('div')
+					const sliderImageWrapper = document.createElement('div')
+					const video = document.createElement('video')
+					const videoFile = document.createElement('source')
+					const img = document.createElement('img')
+					const h2 = document.createElement('h2')
 
-			// Attribution des classes
-			sliderImage.classList.add('carousel__slider--image')
-			sliderImageWrapper.classList.add('carousel__slider--image-wrapper')
+					// Attribution des classes
+					sliderImage.classList.add('carousel__slider--image')
+					sliderImageWrapper.classList.add('carousel__slider--image-wrapper')
 
-			carouselSlider.appendChild(sliderImage)
-			sliderImage.appendChild(sliderImageWrapper)
+					carouselSlider.appendChild(sliderImage)
+					sliderImage.appendChild(sliderImageWrapper)
 
-			h2.textContent = media.title
-			sliderImage.appendChild(h2)
+					h2.textContent = media.title
+					sliderImage.appendChild(h2)
 
-			if (media.image) {
-				img.setAttribute('src', imageCarouselSrc)
-				img.setAttribute('alt', media.title)
-				sliderImageWrapper.appendChild(img)
-			}
+					if (media.image) {
+						img.setAttribute('src', imageCarouselSrc)
+						img.setAttribute('alt', media.title)
+						sliderImageWrapper.appendChild(img)
+					}
 
-			if (media.video) {
-				videoFile.setAttribute('src', videoCarouselSrc)
-				video.setAttribute('controls', true)
-				video.appendChild(videoFile)
+					if (media.video) {
+						videoFile.setAttribute('src', videoCarouselSrc)
+						video.setAttribute('controls', true)
+						video.appendChild(videoFile)
 
-				sliderImageWrapper.appendChild(video)
-			}
+						sliderImageWrapper.appendChild(video)
+					}
+				}
+			})
 		}
 
 		return carousel
 	}
 
+	function prevMedia() {
+		const prevBtn = document.getElementById('prev')
+		prevBtn.addEventListener('click', () => {
+			if (translateX === 0) {
+				translateX = sliderWidth
+				slider.style.transform = 'translateX(' + translateX + 'px)'
+			} else {
+				translateX += 1050
+				slider.style.transform = 'translateX(' + translateX + 'px)'
+			}
+		})
+	}
+
+	function nextMedia() {
+		const nextBtn = document.getElementById('next')
+		nextBtn.addEventListener('click', () => {
+			if (translateX === sliderWidth) {
+				translateX = 0
+				slider.style.transform = 'translateX(0px)'
+			} else {
+				translateX -= 1050
+				slider.style.transform = 'translateX(' + translateX + 'px)'
+			}
+		})
+	}
+
 	function closeCarousel(value) {
 		const carouselClostBtn = document.getElementById('close-carousel-btn')
 		const carousel = document.getElementById('carousel')
-		const carouselContent = document.getElementById('carousel__slider')
 		carouselClostBtn.addEventListener('click', () => {
+			translateX = 0
 			carousel.style.display = 'none'
-			carouselContent.textContent = ''
+			slider.textContent = ''
+			slider.style.transform = 'translateX(' + translateX + 'px)'
 			sortMedias(value)
-			console.log(data)
 		})
 
 		return { data, carousel }
 	}
 
-	return { getPortfolio, sortMedias, openCarousel, closeCarousel }
+	return {
+		getPortfolio,
+		sortMedias,
+		openCarousel,
+		prevMedia,
+		nextMedia,
+		closeCarousel,
+	}
 }

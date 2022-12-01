@@ -1,11 +1,13 @@
 import { photographerFactory } from '../factories/photographer.js'
 import { mediaFactory } from '../factories/medias.js'
+import { modalContact } from '../utils/contactForm.js'
 
 // Récupération de l'id du photographe
 const id = new URL(document.location.href).searchParams.get('id')
+
 const header = document.getElementById('photograph-header')
 const portfolioDiv = document.getElementById('portfolio')
-const mediasDisplayed = document.getElementsByClassName('portfolio__article')
+let mediasDisplayed = document.getElementsByClassName('portfolio__article')
 const select = document.getElementById('filter-select')
 
 // Récupération des informations du photographe
@@ -20,7 +22,7 @@ let mediasData = await fetch('../../data/photographers.json')
 	.then((res) => res.json())
 	.then((arrays) => arrays.media.filter((media) => media.photographerId == id))
 
-const media = mediaFactory(mediasData)
+const media = mediaFactory(mediasData, data.name)
 media.sortMedias(select.value)
 // Affichage du header
 const photographer = photographerFactory(data, mediasData)
@@ -39,10 +41,8 @@ mediasData.forEach((media) => {
 
 // Modification du tri des médias
 select.addEventListener('change', () => {
-	const mediasArray = mediaFactory(mediasData)
-
 	// Tri des médias
-	let sortedMedias = mediasArray.sortMedias(select.value)
+	let sortedMedias = media.sortMedias(select.value)
 
 	// Remise à zero du portfolio
 	portfolioDiv.textContent = ''
@@ -53,15 +53,28 @@ select.addEventListener('change', () => {
 		const displayMedias = medias.getPortfolio()
 		portfolioDiv.appendChild(displayMedias)
 	})
+
+	media.openCarousel(mediasDisplayed)
+	// Fermeture du carousel
+	media.closeCarousel(select.value)
 })
 
 // Affichage du carousel
-for (let i = 0; i < mediasDisplayed.length; i++) {
-	const media = mediaFactory(mediasData, data.name)
-	mediasDisplayed[i].addEventListener('click', () => {
-		media.openCarousel(i)
-	})
-}
+media.openCarousel(mediasDisplayed)
+media.prevMedia()
+media.nextMedia()
 
 // Fermeture du carousel
 media.closeCarousel(select.value)
+
+// MODAL DE CONTACT
+const modal = modalContact(data.name)
+
+// Affichage du modal
+modal.getModal()
+
+// Ouverture du modal
+modal.openModal()
+
+// Fermeture du modal
+modal.closeModal()

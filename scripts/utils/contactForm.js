@@ -1,13 +1,32 @@
-const btn = document.getElementById('contact');
-const closeModalBtn = document.getElementById('close-modal-btn');
-const modal = document.getElementById('contact_modal');
+export function modalContact(name) {
+	const btn = document.getElementById('contact')
+	const closeModalBtn = document.getElementById('close-modal-btn')
+	const modal = document.getElementById('contact_modal')
+	const modalHeader = document.getElementById('modal-header')
 
-// Ouverture du modal
-btn.addEventListener('click', () => {
-  modal.classList.add('display-flex');
-});
+	// Affichage des informations du photographe
+	function getModal() {
+		const title = document.createElement('h2')
+		title.textContent = 'Contactez-moi ' + name
+		modalHeader.appendChild(title)
+	}
 
-// Fermeture du modal
-closeModalBtn.addEventListener('click', () => {
-  modal.classList.remove('display-flex');
-});
+	// Ouverture du modal
+	function openModal() {
+		btn.addEventListener('click', () => {
+			modal.classList.add('display-flex')
+		})
+		return modal
+	}
+
+	// Fermeture du modal
+	function closeModal() {
+		closeModalBtn.addEventListener('click', () => {
+			modal.classList.remove('display-flex')
+		})
+
+		return modal
+	}
+
+	return { getModal, openModal, closeModal }
+}

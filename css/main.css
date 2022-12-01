@@ -202,7 +202,8 @@ button {
     resize: none; }
   #contact_modal .contact_button {
     margin-top: 20px; }
-  #contact_modal input, #contact_modal textarea {
+  #contact_modal input,
+  #contact_modal textarea {
     font-size: 2.25rem;
     padding: 0 20px;
     width: calc(100% - 40px); }

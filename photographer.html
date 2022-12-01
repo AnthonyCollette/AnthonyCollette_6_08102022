@@ -1,85 +1,83 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <title>Fisheye - photographe</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="css/main.css" />
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <a href="/">
-          <img src="assets/images/logo.png" class="logo" />
-        </a>
-      </div>
-    </header>
-    <main id="main">
-      <div class="container">
-        <div class="photograph-header" id="photograph-header">
-          <div class="photograph-header__desc" id="photographer-desc"></div>
-          <button class="contact_button" id="contact">Contactez-moi</button>
-          <div class="photograph-header__img" id="photographer-img"></div>
-        </div>
-        <div class="filter">
-          <span class="filter__title">Trier par</span>
-          <div class="filter__select-wrapper" id="select-wrapper">
-            <select name="filter" id="filter-select">
-              <option value="popularity">Popularité</option>
-              <option value="date">Date</option>
-              <option value="title">Titre</option>
-            </select>
-          </div>
-        </div>
-        <div class="portfolio" id="portfolio"></div>
-        <div class="redbox" id="redbox"></div>
-      </div>
-    </main>
-    <div id="carousel" class="carousel">
-      <div class="carousel__wrapper">
-        <i class="fa-solid fa-chevron-left" id="prev"></i>
-        <div class="carousel__show">
-          <div class="carousel__slider" id="carousel__slider"></div>
-        </div>
-        <i class="fa-solid fa-chevron-right" id="next"></i>
-        <i class="fa-solid fa-xmark" id="close-carousel-btn"></i>
-      </div>
-    </div>
-    <div id="contact_modal">
-      <div class="modal">
-        <header id="modal-header">
-          <button class="close-modal-btn" id="close-modal-btn">
-            <img src="assets/icons/close.svg" alt="bouton de fermeture" />
-          </button>
-        </header>
-        <form>
-          <label>Prénom</label>
-          <input />
-          <label>Nom</label>
-          <input />
-          <label>Email</label>
-          <input />
-          <label>Votre message</label>
-          <textarea></textarea>
+	<head>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="assets/favicon.png" />
+		<link
+			href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Fisheye - photographe</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+			integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link rel="stylesheet" href="css/main.css" />
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<a href="/">
+					<img src="assets/images/logo.png" class="logo" />
+				</a>
+			</div>
+		</header>
+		<main id="main">
+			<div class="container">
+				<div class="photograph-header" id="photograph-header">
+					<div class="photograph-header__desc" id="photographer-desc"></div>
+					<button class="contact_button" id="contact">Contactez-moi</button>
+					<div class="photograph-header__img" id="photographer-img"></div>
+				</div>
+				<div class="filter">
+					<span class="filter__title">Trier par</span>
+					<div class="filter__select-wrapper" id="select-wrapper">
+						<select name="filter" id="filter-select">
+							<option value="popularity">Popularité</option>
+							<option value="date">Date</option>
+							<option value="title">Titre</option>
+						</select>
+					</div>
+				</div>
+				<div class="portfolio" id="portfolio"></div>
+				<div class="redbox" id="redbox"></div>
+			</div>
+		</main>
+		<div id="carousel" class="carousel">
+			<div class="carousel__wrapper">
+				<i class="fa-solid fa-chevron-left" id="prev"></i>
+				<div class="carousel__show">
+					<div class="carousel__slider" id="carousel__slider"></div>
+				</div>
+				<i class="fa-solid fa-chevron-right" id="next"></i>
+				<i class="fa-solid fa-xmark" id="close-carousel-btn"></i>
+			</div>
+		</div>
+		<div id="contact_modal">
+			<div class="modal">
+				<header id="modal-header">
+					<button class="close-modal-btn" id="close-modal-btn">
+						<img src="assets/icons/close.svg" alt="bouton de fermeture" />
+					</button>
+				</header>
+				<form>
+					<label>Prénom</label>
+					<input />
+					<label>Nom</label>
+					<input />
+					<label>Email</label>
+					<input />
+					<label>Votre message</label>
+					<textarea></textarea>
 
-          <button class="contact_button">Envoyer</button>
-        </form>
-      </div>
-    </div>
-    <script type="module" src="scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-    <script src="scripts/factories/medias.js" type="module"></script>
-  </body>
+					<button class="contact_button">Envoyer</button>
+				</form>
+			</div>
+		</div>
+		<script type="module" src="scripts/pages/photographer.js"></script>
+	</body>
 </html>
