@@ -64,7 +64,7 @@ export function photographerFactory(data, mediasData) {
     });
 
     likesDiv.innerHTML = totalOfLikes + ' <i class="fa-solid fa-heart"></i>';
-    tarif.textContent = data.price + ' €/jour';
+    tarif.textContent = data.price + '€/jour';
 
     redBox.appendChild(likesDiv);
     redBox.appendChild(tarif);
