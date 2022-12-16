@@ -222,7 +222,8 @@ button {
 .photograph-header {
   display: flex;
   align-items: center;
-  justify-content: space-between; }
+  justify-content: space-between;
+  padding: 0 50px; }
   .photograph-header__img {
     width: 200px;
     height: 200px;
