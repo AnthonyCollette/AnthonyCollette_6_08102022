@@ -15,11 +15,13 @@ export function photographerFactory(data, mediasData) {
 		const link = document.createElement('a')
 		const texts = document.createElement('div')
 		const pricePar = document.createElement('p')
+		const locationPar = document.createElement('p')
 
 		img.setAttribute('src', picture)
 		h2.textContent = name()
+		locationPar.textContent = city + ', ' + country
 		taglinePar.textContent = tagline
-		taglinePar.classList.add('tagline')
+		locationPar.classList.add('location')
 		link.setAttribute('href', url)
 		link.setAttribute('title', name())
 		pricePar.textContent = price + '€/jour'
@@ -29,6 +31,7 @@ export function photographerFactory(data, mediasData) {
 
 		link.appendChild(img)
 		link.appendChild(h2)
+		texts.appendChild(locationPar)
 		texts.appendChild(taglinePar)
 		texts.appendChild(pricePar)
 

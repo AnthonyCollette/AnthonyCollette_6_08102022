@@ -1,8 +1,15 @@
 .homepage-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    h1 {
-        margin-right: 0;
-    }
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	h1 {
+		margin-right: 0;
+		font-weight: 400;
+	}
+}
+
+.photographer_section {
+	.location {
+		text-align: center;
+	}
 }

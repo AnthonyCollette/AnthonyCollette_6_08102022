@@ -48,7 +48,6 @@ select.addEventListener('change', () => {
 
 	// Remise à zero du portfolio
 	portfolioDiv.textContent = ''
-
 	index = 0
 
 	// Affichage des médias

@@ -213,7 +213,11 @@ button {
   justify-content: space-between;
   align-items: center; }
   .homepage-container h1 {
-    margin-right: 0; }
+    margin-right: 0;
+    font-weight: 400; }
+
+.photographer_section .location {
+  text-align: center; }
 
 .photograph-header {
   display: flex;
