@@ -21,7 +21,7 @@ export function mediaFactory(data, name) {
 
 		// Modification des éléments
 		h5.textContent = title
-		p.innerHTML = likes + '<i class="fa-solid fa-heart"></i>'
+		p.innerHTML = likes + '<i class="fa-solid fa-heart like-btn"></i>'
 
 		// Ajout des classes
 		mediaArticle.classList.add('portfolio__article')
@@ -210,6 +210,15 @@ export function mediaFactory(data, name) {
 		return { data, carousel }
 	}
 
+	function like() {
+		let likeButtons = document.getElementsByClassName('like-btn')
+		for (let i = 0; i < likeButtons.length; i++) {
+			likeButtons[i].addEventListener('click', (e) => {
+				let title = e.target.parentNode.previousElementSibling.innerHTML
+			})
+		}
+	}
+
 	return {
 		getPortfolio,
 		sortMedias,
@@ -217,5 +226,6 @@ export function mediaFactory(data, name) {
 		prevMedia,
 		nextMedia,
 		closeCarousel,
+		like,
 	}
 }

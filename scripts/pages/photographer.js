@@ -7,7 +7,9 @@ const id = new URL(document.location.href).searchParams.get('id')
 
 const header = document.getElementById('photograph-header')
 const portfolioDiv = document.getElementById('portfolio')
-let mediasDisplayed = document.getElementsByClassName('portfolio__article')
+let mediasDisplayed = document.getElementsByClassName(
+	'portfolio__article--img-wrapper'
+)
 const select = document.getElementById('filter-select')
 
 // Récupération des informations du photographe
@@ -24,6 +26,7 @@ let mediasData = await fetch('../../data/photographers.json')
 
 const media = mediaFactory(mediasData, data.name)
 media.sortMedias(select.value)
+
 // Affichage du header
 const photographer = photographerFactory(data, mediasData)
 const infosPhotographer = photographer.getInfosPhotographer()
@@ -58,11 +61,17 @@ select.addEventListener('change', () => {
 		portfolioDiv.appendChild(displayMedias)
 	})
 
+	// Gestion des likes
+	media.like()
+
 	// Ouverture du carousel
 	media.openCarousel(mediasDisplayed)
 	// Fermeture du carousel
 	media.closeCarousel(select.value)
 })
+
+// Gestion des likes
+media.like()
 
 // Affichage du carousel
 media.openCarousel(mediasDisplayed)
