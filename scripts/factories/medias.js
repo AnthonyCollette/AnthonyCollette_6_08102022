@@ -31,7 +31,7 @@ export function mediaFactory(data, name) {
 
 		// Modification des attributs
 		videoPortfolio.setAttribute('controls', true)
-		mediaArticle.setAttribute('tabindex', index+3)
+		mediaArticle.setAttribute('tabindex', -1)
 
 		// Ajout des éléments
 		mediaArticle.appendChild(imgWrapper)
@@ -197,6 +197,8 @@ export function mediaFactory(data, name) {
 					// Attribution des classes
 					sliderImage.classList.add('carousel__slider--image')
 					sliderImageWrapper.classList.add('carousel__slider--image-wrapper')
+
+					sliderImageWrapper.setAttribute('tabindex', 0)
 
 					carouselSlider.appendChild(sliderImage)
 					sliderImage.appendChild(sliderImageWrapper)

@@ -61,27 +61,27 @@
 				<i class="fa-solid fa-xmark" id="close-carousel-btn"></i>
 			</div>
 		</div>
-		<div id="contact_modal">
+		<dialog id="contact_modal">
 			<div class="modal">
 				<header id="modal-header">
-					<button class="close-modal-btn" id="close-modal-btn">
+					<button class="close-modal-btn" id="close-modal-btn" tabindex="1">
 						<img src="assets/icons/close.svg" alt="bouton de fermeture" />
 					</button>
 				</header>
 				<form>
 					<label>Prénom</label>
-					<input />
+					<input name="firstname"/>
 					<label>Nom</label>
-					<input />
+					<input name="lastname"/>
 					<label>Email</label>
-					<input />
+					<input name="email"/>
 					<label>Votre message</label>
 					<textarea></textarea>
 
 					<button class="contact_button">Envoyer</button>
 				</form>
 			</div>
-		</div>
+		</dialog>
 		<script type="module" src="scripts/pages/photographer.js"></script>
 	</body>
 </html>

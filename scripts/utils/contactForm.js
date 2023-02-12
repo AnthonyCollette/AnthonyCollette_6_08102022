@@ -14,7 +14,7 @@ export function modalContact(name) {
 	// Ouverture du modal
 	function openModal() {
 		btn.addEventListener('click', () => {
-			modal.classList.add('display-flex')
+			modal.showModal()
 		})
 		return modal
 	}
@@ -22,7 +22,7 @@ export function modalContact(name) {
 	// Fermeture du modal
 	function closeModal() {
 		closeModalBtn.addEventListener('click', () => {
-			modal.classList.remove('display-flex')
+			modal.closeModal()
 		})
 
 		return modal

@@ -179,7 +179,6 @@ button {
   width: 100vw;
   inset: 0 0 0 0;
   background-color: rgba(255, 255, 255, 0.5);
-  display: none;
   justify-content: center; }
   #contact_modal.display-flex {
     display: flex; }
