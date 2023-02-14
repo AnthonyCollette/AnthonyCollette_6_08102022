@@ -165,61 +165,61 @@ export function mediaFactory(data, name) {
 					}
 				}
 			})
-			
+
 			// Accessibility
 			mediasDisplayed[i].addEventListener('keypress', (e) => {
 				if (e.key === 'Enter') {
-									// Tri des médias
-				const sortArray = (array, index) => {
-					for (let v = 0; v < index; v++) {
-						let firstImage = array.shift()
-						array.push(firstImage)
+					// Tri des médias
+					const sortArray = (array, index) => {
+						for (let v = 0; v < index; v++) {
+							let firstImage = array.shift()
+							array.push(firstImage)
+						}
+						return array
 					}
-					return array
-				}
-				sortArray(data, i)
+					sortArray(data, i)
 
-				// Apparition du carousel
-				carousel.style.display = 'flex'
+					// Apparition du carousel
+					carousel.style.display = 'flex'
 
-				for (const media of data) {
-					const imageCarouselSrc = `assets/images/${firstName}/${media.image}`
-					const videoCarouselSrc = `assets/images/${firstName}/${media.video}`
+					for (const media of data) {
+						const imageCarouselSrc = `assets/images/${firstName}/${media.image}`
+						const videoCarouselSrc = `assets/images/${firstName}/${media.video}`
 
-					// Création des éléments
-					const sliderImage = document.createElement('div')
-					const sliderImageWrapper = document.createElement('div')
-					const video = document.createElement('video')
-					const videoFile = document.createElement('source')
-					const img = document.createElement('img')
-					const h2 = document.createElement('h2')
+						// Création des éléments
+						const sliderImage = document.createElement('div')
+						const sliderImageWrapper = document.createElement('div')
+						const video = document.createElement('video')
+						const videoFile = document.createElement('source')
+						const img = document.createElement('img')
+						const h2 = document.createElement('h2')
 
-					// Attribution des classes
-					sliderImage.classList.add('carousel__slider--image')
-					sliderImageWrapper.classList.add('carousel__slider--image-wrapper')
+						// Attribution des classes
+						sliderImage.classList.add('carousel__slider--image')
+						sliderImageWrapper.classList.add('carousel__slider--image-wrapper')
 
-					sliderImageWrapper.setAttribute('tabindex', 0)
+						sliderImageWrapper.setAttribute('tabindex', 0)
 
-					carouselSlider.appendChild(sliderImage)
-					sliderImage.appendChild(sliderImageWrapper)
+						carouselSlider.appendChild(sliderImage)
+						sliderImage.appendChild(sliderImageWrapper)
 
-					h2.textContent = media.title
-					sliderImage.appendChild(h2)
+						h2.textContent = media.title
+						sliderImage.appendChild(h2)
 
-					if (media.image) {
-						img.setAttribute('src', imageCarouselSrc)
-						img.setAttribute('alt', media.title)
-						sliderImageWrapper.appendChild(img)
+						if (media.image) {
+							img.setAttribute('src', imageCarouselSrc)
+							img.setAttribute('alt', media.title)
+							sliderImageWrapper.appendChild(img)
+						}
+
+						if (media.video) {
+							videoFile.setAttribute('src', videoCarouselSrc)
+							video.setAttribute('controls', true)
+							video.appendChild(videoFile)
+
+							sliderImageWrapper.appendChild(video)
+						}
 					}
-
-					if (media.video) {
-						videoFile.setAttribute('src', videoCarouselSrc)
-						video.setAttribute('controls', true)
-						video.appendChild(videoFile)
-
-						sliderImageWrapper.appendChild(video)
-					}
-				}
 				}
 			})
 		}
@@ -271,7 +271,11 @@ export function mediaFactory(data, name) {
 		let likeButtons = document.getElementsByClassName('like-btn')
 		for (let i = 0; i < likeButtons.length; i++) {
 			likeButtons[i].addEventListener('click', (e) => {
-				let title = e.target.parentNode.previousElementSibling.innerHTML
+				let mediaLikes = likeButtons[i].parentNode.innerText
+				mediaLikes++
+				likeButtons[i].parentNode.innerHTML = `
+					${mediaLikes}<i class="fa-solid fa-heart like-btn"></i>
+				`
 			})
 		}
 	}

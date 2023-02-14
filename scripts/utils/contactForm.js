@@ -22,7 +22,7 @@ export function modalContact(name) {
 	// Fermeture du modal
 	function closeModal() {
 		closeModalBtn.addEventListener('click', () => {
-			modal.closeModal()
+			modal.close()
 		})
 
 		return modal
