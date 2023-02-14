@@ -268,14 +268,18 @@ export function mediaFactory(data, name) {
 	}
 
 	function like() {
-		let likeButtons = document.getElementsByClassName('like-btn')
+		let likeButtons = document.getElementsByClassName('likes')
+		let totalLikes = document.getElementById('redbox')
 		for (let i = 0; i < likeButtons.length; i++) {
 			likeButtons[i].addEventListener('click', (e) => {
-				let mediaLikes = likeButtons[i].parentNode.innerText
+				let mediaLikes = likeButtons[i].innerText
 				mediaLikes++
-				likeButtons[i].parentNode.innerHTML = `
+				likeButtons[i].innerHTML = `
 					${mediaLikes}<i class="fa-solid fa-heart like-btn"></i>
 				`
+				let numberOfTotalLikes = totalLikes.childNodes[0].innerText
+				numberOfTotalLikes++
+				totalLikes.childNodes[0].innerHTML = `${numberOfTotalLikes}<i class="fa-solid fa-heart like-btn"></i>`
 			})
 		}
 	}
