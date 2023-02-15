@@ -92,3 +92,6 @@ modal.openModal()
 
 // Fermeture du modal
 modal.closeModal()
+
+// Envoi du formulaire
+photographer.sendForm()

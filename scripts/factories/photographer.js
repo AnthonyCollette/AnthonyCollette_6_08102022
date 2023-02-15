@@ -82,5 +82,18 @@ export function photographerFactory(data, mediasData) {
 		return redBox
 	}
 
-	return { name, getUserCardDOM, getInfosPhotographer, createRedBox }
+	function sendForm() {
+		let sendBtn = document.getElementById('send-form')
+		let firstName = document.getElementById('firstname')
+		let lastName = document.getElementById('lastname')
+		let email = document.getElementById('email')
+		let message = document.getElementById('message')
+		
+		sendBtn.addEventListener('click', (e) => {
+			e.preventDefault()
+			console.log('Prénom : ' + firstName.value + ', nom : '+ lastName.value + ', email : ' + email.value + ', message : ' + message.value)
+		})
+	}
+
+	return { name, getUserCardDOM, getInfosPhotographer, createRedBox, sendForm }
 }

@@ -238,6 +238,17 @@ export function mediaFactory(data, name) {
 				slider.style.transform = 'translateX(' + translateX + 'px)'
 			}
 		})
+		document.addEventListener('keydown', (e) => {
+			if (e.keyCode == '37') {
+				if (translateX === 0) {
+					translateX = sliderWidth
+					slider.style.transform = 'translateX(' + translateX + 'px)'
+				} else {
+					translateX += 1050
+					slider.style.transform = 'translateX(' + translateX + 'px)'
+				}
+			}
+		})
 	}
 
 	function nextMedia() {
@@ -249,6 +260,17 @@ export function mediaFactory(data, name) {
 			} else {
 				translateX -= 1050
 				slider.style.transform = 'translateX(' + translateX + 'px)'
+			}
+		})
+		document.addEventListener('keydown', (e) => {
+			if (e.keyCode == '39') {
+				if (translateX === sliderWidth) {
+					translateX = 0
+					slider.style.transform = 'translateX(0px)'
+				} else {
+					translateX -= 1050
+					slider.style.transform = 'translateX(' + translateX + 'px)'
+				}
 			}
 		})
 	}
