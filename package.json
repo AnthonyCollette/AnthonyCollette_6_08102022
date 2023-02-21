@@ -18,6 +18,5 @@
   "homepage": "https://github.com/AnthonyCollette/AnthonyCollette_6_08102022#readme",
   "devDependencies": {
     "node-sass": "^7.0.3"
-  },
-  "private": false
+  }
 }

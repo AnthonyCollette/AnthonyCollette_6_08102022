@@ -13,14 +13,14 @@ let mediasDisplayed = document.getElementsByClassName(
 const select = document.getElementById('filter-select')
 
 // Récupération des informations du photographe
-const data = await fetch('/data/photographers.json')
+const data = await fetch('./../../data/photographers.json')
 	.then((res) => res.json())
 	.then((arrays) =>
 		arrays.photographers.find((photographer) => photographer.id == id)
 	)
 
 // Récupération des médias du photographe
-let mediasData = await fetch('/data/photographers.json')
+let mediasData = await fetch('./../../data/photographers.json')
 	.then((res) => res.json())
 	.then((arrays) => arrays.media.filter((media) => media.photographerId == id))
 
