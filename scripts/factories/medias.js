@@ -31,7 +31,9 @@ export function mediaFactory(data, name) {
 
 		// Modification des attributs
 		videoPortfolio.setAttribute('controls', true)
-		mediaArticle.setAttribute('tabindex', -1)
+		imgWrapper.setAttribute('tabindex', 0)
+		p.setAttribute('tabindex', 0)
+		p.setAttribute('role', 'button')
 
 		// Ajout des éléments
 		mediaArticle.appendChild(imgWrapper)
@@ -224,6 +226,8 @@ export function mediaFactory(data, name) {
 			})
 		}
 
+
+
 		return carousel
 	}
 
@@ -286,6 +290,18 @@ export function mediaFactory(data, name) {
 			sortMedias(value)
 		})
 
+		document.addEventListener('keydown', (e) => {
+			if (carousel.style.display == 'flex') {
+				if (e.key === "Escape") {
+					translateX = 0
+					carousel.style.display = 'none'
+					slider.textContent = ''
+					slider.style.transform = 'translateX(' + translateX + 'px)'
+					sortMedias(value)
+				}
+			}
+		})
+
 		return { data, carousel }
 	}
 
@@ -302,6 +318,18 @@ export function mediaFactory(data, name) {
 				let numberOfTotalLikes = totalLikes.childNodes[0].innerText
 				numberOfTotalLikes++
 				totalLikes.childNodes[0].innerHTML = `${numberOfTotalLikes}<i class="fa-solid fa-heart like-btn"></i>`
+			})
+			likeButtons[i].addEventListener('keypress', (e) => {
+				if (e.keyCode === 13) {
+					let mediaLikes = likeButtons[i].innerText
+					mediaLikes++
+					likeButtons[i].innerHTML = `
+						${mediaLikes}<i class="fa-solid fa-heart like-btn"></i>
+					`
+					let numberOfTotalLikes = totalLikes.childNodes[0].innerText
+					numberOfTotalLikes++
+					totalLikes.childNodes[0].innerHTML = `${numberOfTotalLikes}<i class="fa-solid fa-heart like-btn"></i>`
+				}
 			})
 		}
 	}
