@@ -34,6 +34,7 @@ export function mediaFactory(data, name) {
 		imgWrapper.setAttribute('tabindex', 0)
 		p.setAttribute('tabindex', 0)
 		p.setAttribute('role', 'button')
+		p.setAttribute('aria-label', 'Ajouter un like')
 
 		// Ajout des éléments
 		mediaArticle.appendChild(imgWrapper)
