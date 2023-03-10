@@ -18,6 +18,7 @@ export function photographerFactory(data, mediasData) {
 		const locationPar = document.createElement('p')
 
 		img.setAttribute('src', picture)
+		img.setAttribute('alt', name())
 		h2.textContent = name()
 		locationPar.textContent = city + ', ' + country
 		taglinePar.textContent = tagline
