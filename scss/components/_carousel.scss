@@ -22,14 +22,17 @@
     position: absolute;
     top: 20px;
     right: 0px;
+    cursor: pointer;
   }
 
  #prev {
     padding-right: 35px;
+    cursor: pointer;
   }
 
   #next {
     padding-left: 35px;
+    cursor: pointer;
   }
 
   &__wrapper {

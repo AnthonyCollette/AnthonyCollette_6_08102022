@@ -167,12 +167,15 @@ button:hover {
   position: absolute;
   top: 20px;
   right: 0px;
+  cursor: pointer;
 }
 .carousel #prev {
   padding-right: 35px;
+  cursor: pointer;
 }
 .carousel #next {
   padding-left: 35px;
+  cursor: pointer;
 }
 .carousel__wrapper {
   display: flex;
