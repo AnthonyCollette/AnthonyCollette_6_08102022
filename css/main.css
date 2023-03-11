@@ -40,11 +40,12 @@ button:hover {
   font-size: 1.125rem;
   font-weight: 700;
 }
-.filter {
+.filter__select-wrapper {
   display: inline-block;
   position: relative;
+  margin-left: 25px;
 }
-.filter::after {
+.filter__select-wrapper::after {
   content: "";
   width: 10px;
   height: 10px;
@@ -56,11 +57,10 @@ button:hover {
   transform: translateY(-70%) rotate(45deg);
   transition: all 0.4s ease-in-out;
 }
-.filter.open::after {
+.filter__select-wrapper.open::after {
   transform: translateY(-30%) rotate(225deg);
 }
 .filter select {
-  margin-left: 25px;
   cursor: pointer;
   background-color: #901c1c;
   color: #fff;
