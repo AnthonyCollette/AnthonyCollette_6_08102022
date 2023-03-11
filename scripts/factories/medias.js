@@ -313,6 +313,7 @@ export function mediaFactory(data, name) {
 			let alreadyLiked = false
 			likeButtons[i].addEventListener('click', (e) => {
 				if (!alreadyLiked) {
+					console.log('liked')
 					let mediaLikes = likeButtons[i].innerText
 					mediaLikes++
 					likeButtons[i].innerHTML = `
