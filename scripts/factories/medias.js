@@ -310,15 +310,19 @@ export function mediaFactory(data, name) {
 		let likeButtons = document.getElementsByClassName('likes')
 		let totalLikes = document.getElementById('redbox')
 		for (let i = 0; i < likeButtons.length; i++) {
+			let alreadyLiked = false
 			likeButtons[i].addEventListener('click', (e) => {
-				let mediaLikes = likeButtons[i].innerText
-				mediaLikes++
-				likeButtons[i].innerHTML = `
+				if (!alreadyLiked) {
+					let mediaLikes = likeButtons[i].innerText
+					mediaLikes++
+					likeButtons[i].innerHTML = `
 					${mediaLikes}<i class="fa-solid fa-heart like-btn"></i>
 				`
-				let numberOfTotalLikes = totalLikes.childNodes[0].innerText
-				numberOfTotalLikes++
-				totalLikes.childNodes[0].innerHTML = `${numberOfTotalLikes}<i class="fa-solid fa-heart like-btn"></i>`
+					let numberOfTotalLikes = totalLikes.childNodes[0].innerText
+					numberOfTotalLikes++
+					totalLikes.childNodes[0].innerHTML = `${numberOfTotalLikes}<i class="fa-solid fa-heart like-btn"></i>`
+					alreadyLiked = true
+				}
 			})
 			likeButtons[i].addEventListener('keypress', (e) => {
 				if (e.keyCode === 13) {
